@@ -215,7 +215,7 @@ a:hover {
     z-index: 1000;
     width: 100%;
     max-width: 100vw;
-    overflow-x: hidden;
+    overflow: visible;
 }
 
 .nav-container {
@@ -296,6 +296,7 @@ a:hover {
     font-size: 1.5em;
     cursor: pointer;
     color: var(--heading-color);
+    padding-right: 15px;
 }
 
 /* Fin de la sección Header */
@@ -1170,18 +1171,33 @@ a:hover {
     .nav {
         display: none;
         flex-direction: column;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        width: 100%;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 90%;
+        max-width: 400px;
         background-color: var(--white-color);
-        box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-        padding: 20px 0;
-        z-index: 999;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        padding: 30px 20px;
+        z-index: 9999;
+        border-radius: 15px;
     }
 
     .nav.active {
         display: flex;
+    }
+    
+    /* Overlay oscuro detrás del menú */
+    .nav.active::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: -1;
     }
 
     .nav-list {
@@ -1189,23 +1205,28 @@ a:hover {
         text-align: center;
         width: 100%;
         gap: 0;
+        padding: 0;
+        margin: 0;
     }
 
     .nav-list li {
         width: 100%;
-        padding: 10px 0;
+        padding: 15px 0;
+        list-style: none;
     }
 
     .nav-link {
         display: block;
-        padding: 10px 0;
+        padding: 12px 0;
         color: var(--foreground-color);
+        font-size: 1.1em;
     }
 
     .nav .btn-primary {
-        width: calc(100% - 40px);
-        margin: 20px auto 0 auto;
+        width: 100%;
+        margin: 20px 0 0 0;
         display: block;
+        padding: 12px 20px;
     }
 
     .hamburger {
@@ -1224,7 +1245,6 @@ a:hover {
     .hero-subtitle {
         font-size: 1.8rem;
         margin-top: 1em;
-    }
     }
 
     .hero p {
