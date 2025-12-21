@@ -221,7 +221,7 @@ a:hover {
     display: flex;
     align-items: center;
     gap: 1.5rem; /* AUMENTADO - Separa logo circular del texto "Blue Pacific..." */
-    padding-left: 200px; /* Separación del borde izquierdo */
+    padding-left: 20px; /* Separación del borde izquierdo */
 }
 
 .logo-image {
@@ -263,7 +263,7 @@ a:hover {
     display: flex;
     align-items: center; /* Centra verticalmente los elementos (lista y botón) */
     gap: 30px; /* AUMENTADO - Espacio entre nav-list y botones FREE QUOTE/CALL */
-    padding-right: 100px; /* Separación del borde derecho */
+    padding-right: 20px; /* Separación del borde derecho */
 }
 
 .nav-list {
@@ -1164,10 +1164,10 @@ a:hover {
 /* Responsive Design */
 @media (max-width: 992px) {
     .nav {
-        display: none; /* Oculta la navegación principal por defecto */
+        display: none;
         flex-direction: column;
         position: absolute;
-        top: 70px; /* Ajustar según la altura del header */
+        top: 70px;
         left: 0;
         width: 100%;
         background-color: var(--white-color);
@@ -1195,15 +1195,18 @@ a:hover {
     .nav-link {
         display: block;
         padding: 10px 0;
+        color: var(--foreground-color);
     }
 
     .nav .btn-primary {
-        width: calc(100% - 40px); /* Ancho del botón con padding */
+        width: calc(100% - 40px);
         margin: 20px auto 0 auto;
+        display: block;
     }
 
     .hamburger {
         display: block;
+        cursor: pointer;
     }
 
     .hero h1 {
@@ -1216,7 +1219,8 @@ a:hover {
     
     .hero-subtitle {
         font-size: 1.8rem;
-        margin-top: 1.
+        margin-top: 1em;
+    }
     }
 
     .hero p {

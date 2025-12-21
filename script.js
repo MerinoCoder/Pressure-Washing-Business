@@ -112,29 +112,47 @@ document.addEventListener('DOMContentLoaded', () => {
         const sliderLine = slider.querySelector('.slider-line');
         let isActive = false;
         
-        function updateSlider(e) {
+        function updateSlider(x) {
             const rect = slider.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const sliderPosition = Math.max(0, Math.min(100, (x / rect.width) * 100));
+            const position = x - rect.left;
+            const sliderPosition = Math.max(0, Math.min(100, (position / rect.width) * 100));
             
             afterContainer.style.clipPath = `inset(0 ${100 - sliderPosition}% 0 0)`;
             sliderLine.style.left = `${sliderPosition}%`;
         }
         
-        // Activate on mouse enter for immediate response
+        // Mouse events
         slider.addEventListener('mouseenter', (e) => {
             isActive = true;
-            updateSlider(e);
+            updateSlider(e.clientX);
         });
         
         slider.addEventListener('mousemove', (e) => {
             if (isActive) {
-                updateSlider(e);
+                updateSlider(e.clientX);
             }
         });
         
-        // Reset to 50% on mouse leave
         slider.addEventListener('mouseleave', () => {
+            isActive = false;
+            afterContainer.style.clipPath = 'inset(0 50% 0 0)';
+            sliderLine.style.left = '50%';
+        });
+        
+        // Touch events for mobile
+        slider.addEventListener('touchstart', (e) => {
+            isActive = true;
+            const touch = e.touches[0];
+            updateSlider(touch.clientX);
+        });
+        
+        slider.addEventListener('touchmove', (e) => {
+            e.preventDefault(); // Prevent scrolling while sliding
+            const touch = e.touches[0];
+            updateSlider(touch.clientX);
+        });
+        
+        slider.addEventListener('touchend', () => {
             isActive = false;
             afterContainer.style.clipPath = 'inset(0 50% 0 0)';
             sliderLine.style.left = '50%';
