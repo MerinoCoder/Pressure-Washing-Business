@@ -51,6 +51,10 @@
     box-sizing: border-box;
 }
 
+html {
+    overflow-x: hidden;
+}
+
 body {
     font-family: var(--font-family-sans);
     font-size: var(--font-size-base);
@@ -58,6 +62,8 @@ body {
     color: var(--text-color);
     background-color: var(--bg-color);
     overflow-x: hidden; /* Evita el scroll horizontal */
+    width: 100%;
+    max-width: 100vw;
 }
 
 .container {
@@ -207,54 +213,41 @@ a:hover {
     position: sticky;
     top: 0;
     z-index: 1000;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
 }
 
 .nav-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0; /* Sin padding para permitir que el logo se pegue al borde */
-    max-width: 100%; /* Ocupa todo el ancho */
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem; /* AUMENTADO - Separa logo circular del texto "Blue Pacific..." */
-    padding-left: 20px; /* Separación del borde izquierdo */
-}
-
-.logo-image {
-    width: 70px;
-    height: 70px;
-    object-fit: contain;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.9);
-    padding: 5px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 0;
+    max-width: 100%;
+    width: 100%;
 }
 
 .logo {
     display: flex;
     align-items: center;
     gap: 0.75rem;
+    padding-left: 20px;
+    font-weight: 700;
+    font-size: 1.4em;
+    color: var(--heading-color);
+    flex-shrink: 1;
+    min-width: 0;
 }
 
 .logo-image {
-    width: 120px;
-    height: 120px;
+    width: 80px;
+    height: 80px;
     object-fit: contain;
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.9);
     padding: 0px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.logo {
-    font-weight: 700;
-    font-size: 1.8em;
-    color: var(--heading-color);
-    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 /* Modificación aquí para alinear el botón y los enlaces */
@@ -1163,6 +1156,17 @@ a:hover {
 
 /* Responsive Design */
 @media (max-width: 992px) {
+    .logo {
+        font-size: 1em;
+        gap: 0.5rem;
+        padding-left: 10px;
+    }
+    
+    .logo-image {
+        width: 50px;
+        height: 50px;
+    }
+    
     .nav {
         display: none;
         flex-direction: column;
