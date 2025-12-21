@@ -100,152 +100,44 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 6. Validación básica del formulario (opcional, el HTML ya tiene 'required')
-    const contactForm = document.querySelector('.contact-form');
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            // Aquí podrías añadir una validación JS más compleja si es necesario,
-            // pero los atributos 'required' en HTML ya hacen un buen trabajo para lo básico.
-            if (!document.getElementById('acepto-privacidad').checked) {
-                alert('Debes aceptar la política de privacidad.');
-                e.preventDefault(); // Evita que el formulario se envíe
-            } else {
-                // Si todo está bien, podrías enviar los datos con Fetch API o XMLHttpRequest
-                // Para este ejemplo simple, solo mostraremos una alerta
-                alert('Mensaje enviado con éxito. Nos pondremos en contacto contigo pronto.');
-                // e.preventDefault(); // Descomenta esta línea si no quieres que el formulario se recargue
-                contactForm.reset(); // Limpia el formulario después del envío
-            }
-        });
-    }
+    // 6. Form submission with Web3Forms - no custom validation needed
+    // Web3Forms handles the submission automatically
 });
 
-// Modern Before/After Slider functionality
-class ModernSlider {
-    constructor() {
-        this.currentSlide = 0;
-        this.slides = document.querySelectorAll('.slide');
-        this.dots = document.querySelectorAll('.dot');
-        this.isAnimating = false;
-        this.init();
-    }
-
-    init() {
-        if (this.slides.length === 0) return;
-        
-        // Inicializar primer slide
-        this.updateSlider();
-        
-        // Event listeners para botones
-        document.querySelector('.prev-btn')?.addEventListener('click', () => this.prevSlide());
-        document.querySelector('.next-btn')?.addEventListener('click', () => this.nextSlide());
-        
-        // Event listeners para dots
-        this.dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => this.goToSlide(index));
-        });
-        
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft') this.prevSlide();
-            if (e.key === 'ArrowRight') this.nextSlide();
-        });
-        
-        // Touch/swipe support
-        this.addTouchSupport();
-    }
-
-    prevSlide() {
-        if (this.isAnimating) return;
-        this.currentSlide = this.currentSlide === 0 ? this.slides.length - 1 : this.currentSlide - 1;
-        this.updateSlider();
-    }
-
-    nextSlide() {
-        if (this.isAnimating) return;
-        this.currentSlide = this.currentSlide === this.slides.length - 1 ? 0 : this.currentSlide + 1;
-        this.updateSlider();
-    }
-
-    goToSlide(index) {
-        if (this.isAnimating || index === this.currentSlide) return;
-        this.currentSlide = index;
-        this.updateSlider();
-    }
-
-    updateSlider() {
-        this.isAnimating = true;
-
-        // Update slides
-        this.slides.forEach((slide, index) => {
-            slide.classList.remove('active', 'prev', 'next');
-            
-            if (index === this.currentSlide) {
-                slide.classList.add('active');
-            } else if (index < this.currentSlide) {
-                slide.classList.add('prev');
-            } else {
-                slide.classList.add('next');
-            }
-        });
-
-        // Update dots
-        this.dots.forEach((dot, index) => {
-            dot.classList.toggle('active', index === this.currentSlide);
-        });
-
-        // Reset animating flag
-        setTimeout(() => {
-            this.isAnimating = false;
-        }, 600);
-    }
-
-    addTouchSupport() {
-        let touchStartX = 0;
-        let touchEndX = 0;
-        
-        const slider = document.querySelector('.slider-container');
-        if (!slider) return;
-
-        slider.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-        });
-
-        slider.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            this.handleSwipe();
-        });
-    }
-
-    handleSwipe() {
-        const swipeThreshold = 50;
-        const diff = touchStartX - touchEndX;
-        
-        if (Math.abs(diff) > swipeThreshold) {
-            if (diff > 0) {
-                this.nextSlide();
-            } else {
-                this.prevSlide();
-            }
-        }
-    }
-}
-
-// Legacy functions para compatibilidad con HTML onclick
-function changeSlide(n) {
-    if (window.modernSlider) {
-        if (n > 0) window.modernSlider.nextSlide();
-        else window.modernSlider.prevSlide();
-    }
-}
-
-function currentSlide(n) {
-    if (window.modernSlider) {
-        window.modernSlider.goToSlide(n - 1);
-    }
-}
-
-// Initialize slider cuando el DOM esté listo
+// Initialize slider when the DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-    window.modernSlider = new ModernSlider();
+    // Before/After Image Slider functionality
+    document.querySelectorAll('.before-after-slider').forEach(slider => {
+        const afterContainer = slider.querySelector('.after-container');
+        const sliderLine = slider.querySelector('.slider-line');
+        let isActive = false;
+        
+        function updateSlider(e) {
+            const rect = slider.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const sliderPosition = Math.max(0, Math.min(100, (x / rect.width) * 100));
+            
+            afterContainer.style.clipPath = `inset(0 ${100 - sliderPosition}% 0 0)`;
+            sliderLine.style.left = `${sliderPosition}%`;
+        }
+        
+        // Activate on mouse enter for immediate response
+        slider.addEventListener('mouseenter', (e) => {
+            isActive = true;
+            updateSlider(e);
+        });
+        
+        slider.addEventListener('mousemove', (e) => {
+            if (isActive) {
+                updateSlider(e);
+            }
+        });
+        
+        // Reset to 50% on mouse leave
+        slider.addEventListener('mouseleave', () => {
+            isActive = false;
+            afterContainer.style.clipPath = 'inset(0 50% 0 0)';
+            sliderLine.style.left = '50%';
+        });
+    });
 });

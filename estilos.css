@@ -1,18 +1,46 @@
+/* Custom Fonts */
+@font-face {
+    font-family: 'SATriumph';
+    src: url('/fonts/SATriumph.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'SATriumph-Outline';
+    src: url('/fonts/SATriumph-Outline.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 /* Base y Tipografía - Blue Pacific Pressure Washing Colors */
 :root {
-    --primary-color: #1e3a8a; /* Azul marino principal del logo */
-    --secondary-color: #3b82f6; /* Azul más claro para elementos secundarios */
-    --accent-color: #dc2626; /* Rojo del logo para acentos */
-    --gold-color: #d97706; /* Dorado del logo para highlights */
-    --text-color: #1f2937; /* Gris oscuro para texto */
-    --heading-color: #1e3a8a; /* Azul marino para títulos */
+    /* New HSL Color Scheme */
+    --primary-color: hsl(205, 87%, 45%); /* Pacific Blue */
+    --primary-light: hsl(205, 87%, 65%);
+    --primary-dark: hsl(205, 87%, 35%);
+    --accent-color: hsl(195, 100%, 40%); /* Teal accent */
+    --background-color: hsl(0, 0%, 100%); /* White */
+    --foreground-color: hsl(215, 25%, 15%); /* Dark navy text */
+    --muted-foreground: hsl(215, 15%, 45%); /* Gray text */
+    --border-color: hsl(200, 18%, 90%);
+    
+    /* Legacy colors for backward compatibility */
+    --secondary-color: var(--primary-light);
+    --gold-color: #d97706;
+    --text-color: var(--foreground-color);
+    --heading-color: var(--foreground-color);
     --white-color: #ffffff;
+    --bg-color: var(--background-color);
     --dark-grey: #374151;
-    --light-grey-bg: #f8fafc;
-    --border-color: #e2e8f0;
-    --wave-blue: #0ea5e9; /* Azul de las olas */
+    --light-grey-bg: #f0f4f8;
+    --wave-blue: var(--accent-color);
 
     --font-family-sans: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --font-family-triumph: 'SATriumph', sans-serif;
+    --font-family-triumph-outline: 'SATriumph-Outline', sans-serif;
     --font-size-base: 16px;
     --line-height-base: 1.6;
 }
@@ -28,7 +56,7 @@ body {
     font-size: var(--font-size-base);
     line-height: var(--line-height-base);
     color: var(--text-color);
-    background-color: var(--white-color);
+    background-color: var(--bg-color);
     overflow-x: hidden; /* Evita el scroll horizontal */
 }
 
@@ -40,6 +68,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
     color: var(--heading-color);
+    font-family: var(--font-family-triumph);
     line-height: 1.2;
     margin-bottom: 0.5em;
 }
@@ -57,6 +86,20 @@ a {
 
 a:hover {
     color: #4a008c; /* Un morado más oscuro al pasar el ratón */
+}
+
+/* Font utility classes */
+.font-triumph {
+    font-family: var(--font-family-triumph);
+}
+
+.font-triumph-outline {
+    font-family: var(--font-family-triumph-outline);
+}
+
+/* Group utility for hover effects */
+.group {
+    position: relative;
 }
 
 .btn {
@@ -108,8 +151,8 @@ a:hover {
     background-color: transparent;
     color: var(--primary-color);
     border: none;
-    padding: 8px 12px;
-    font-size: 0.9em;
+    padding: 6px 8px;
+    font-size: 0.75em;
     white-space: nowrap; /* Mantener el texto en una línea */
 }
 
@@ -159,7 +202,7 @@ a:hover {
 /* Header */
 .header {
     background-color: var(--white-color);
-    padding: 15px 0;
+    padding: 5px 0;
     box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     position: sticky;
     top: 0;
@@ -170,6 +213,41 @@ a:hover {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0; /* Sin padding para permitir que el logo se pegue al borde */
+    max-width: 100%; /* Ocupa todo el ancho */
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem; /* AUMENTADO - Separa logo circular del texto "Blue Pacific..." */
+    padding-left: 200px; /* Separación del borde izquierdo */
+}
+
+.logo-image {
+    width: 70px;
+    height: 70px;
+    object-fit: contain;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.logo-image {
+    width: 120px;
+    height: 120px;
+    object-fit: contain;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 0px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .logo {
@@ -184,20 +262,20 @@ a:hover {
     /* Usamos flexbox para alinear el menú */
     display: flex;
     align-items: center; /* Centra verticalmente los elementos (lista y botón) */
-    gap: 30px; /* Espacio entre los elementos de navegación */
-    margin-left: 40px; /* Espacio entre el logo y la navegación */
+    gap: 30px; /* AUMENTADO - Espacio entre nav-list y botones FREE QUOTE/CALL */
+    padding-right: 100px; /* Separación del borde derecho */
 }
 
 .nav-list {
     list-style: none;
     display: flex;
-    gap: 30px;
+    gap: 40px; /* AUMENTADO - Separa Home | Services | Why Choose Us | Gallery */
 }
 
 .nav-link {
     color: var(--dark-grey);
-    font-weight: 500;
-    font-size: 1.2em;
+    font-weight: 600;
+    font-size: 1.12em; /* Más grande */
     transition: color 0.3s ease;
     padding-bottom: 5px;
     position: relative;
@@ -231,21 +309,96 @@ a:hover {
 
 /* Hero Section */
 .hero {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('assets/portada.webp');
+    background-image: url('assets/portada.webp');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
     background-attachment: fixed;
-    padding: 150px 0 100px 0;
+    padding: 0;
     text-align: center;
     position: relative;
     overflow: hidden;
     min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .hero-content {
     max-width: 900px;
     margin: 0 auto;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    color: var(--primary-color);
+    margin-bottom: 0;
+    line-height: 1;
+    font-weight: 900;
+    letter-spacing: 0em;
+    text-transform: uppercase;
+}
+
+.hero-title-solid {
+    color: white;
+    font-family: 'SATriumph-Outline', var(--font-family-triumph-outline);
+    text-shadow: none;
+    display: block;
+    font-weight: 900;
+    font-size: 1.5em;
+}
+
+.hero-title-outline {
+    font-family: 'SATriumph', var(--font-family-triumph);
+    color: hsl(205, 88%, 63%); /* Bright ocean blue */
+    text-shadow: none;
+    display: block;
+    font-weight: 900;
+    font-size: 0.9em;
+}
+
+.hero-subtitle {
+    font-size: 1.3rem !important;
+    color: white;
+    margin-top: 1.5em;
+    margin-bottom: 2em;
+    font-weight: 900 !important;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    text-shadow: none;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: var(--font-family-sans);
+}
+
+.btn-call-hero {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2.5rem;
+    background-color: white;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.btn-call-hero:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.btn-call-hero i {
+    font-size: 1.2rem;
 }
 
 .hero h1 {
@@ -454,10 +607,13 @@ a:hover {
 /* Modern Services Grid - Nuevo diseño */
 .services-grid-modern {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 40px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
     margin-top: 60px;
     padding: 0 20px;
+    max-width: 56rem; /* max-w-4xl */
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .service-card-modern {
@@ -465,6 +621,7 @@ a:hover {
     padding: 40px 30px;
     background: transparent;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
 }
 
 .service-card-modern:hover {
@@ -472,26 +629,26 @@ a:hover {
 }
 
 .service-icon-modern {
-    width: 80px;
-    height: 80px;
-    background: linear-gradient(135deg, #3b82f6, #1e40af);
-    border-radius: 20px;
+    width: 4rem; /* 16x16 equivalent in rem */
+    height: 4rem;
+    background: hsl(205, 87%, 45%, 0.1); /* bg-primary/10 */
+    border: 1px solid hsl(205, 87%, 45%, 0.2); /* border-primary/20 */
+    border-radius: 1rem; /* rounded-2xl */
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 0 auto 30px auto;
-    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .service-card-modern:hover .service-icon-modern {
     transform: scale(1.05);
-    box-shadow: 0 12px 35px rgba(59, 130, 246, 0.4);
+    background: hsl(205, 87%, 45%, 0.15);
 }
 
 .service-icon-modern i {
-    font-size: 2.2rem;
-    color: white;
+    font-size: 1.5rem;
+    color: var(--primary-color);
 }
 
 .service-card-modern h3 {
@@ -503,11 +660,45 @@ a:hover {
 }
 
 .service-card-modern p {
-    color: #6b7280;
+    color: var(--muted-foreground);
     font-size: 1rem;
     line-height: 1.6;
-    margin-bottom: 0;
+    margin-bottom: 1rem;
     text-align: center;
+}
+
+/* Service list with hover dropdown */
+.service-list {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 0 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+    text-align: left;
+}
+
+.service-card-modern:hover .service-list {
+    max-height: 24rem; /* max-h-96 */
+}
+
+.service-list li {
+    padding: 0.5rem 0 0.5rem 1.5rem;
+    position: relative;
+    color: var(--foreground-color);
+    font-size: 0.95rem;
+}
+
+.service-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0.375rem; /* 1.5 equivalent */
+    height: 0.375rem;
+    background: var(--primary-color);
+    border-radius: 50%;
 }
 
 /* Why Choose Us Section */
@@ -661,6 +852,54 @@ a:hover {
     color: #777;
 }
 
+.before-after-slider-item {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  border-radius: 12px;
+  cursor: ew-resize;
+}
+
+.before-after-slider-item img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.before-after-slider-item .after-image {
+  clip-path: inset(0 50% 0 0);
+}
+
+.slider-handle {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 4px;
+  height: 100%;
+  background: white;
+  transform: translateX(-50%);
+  cursor: ew-resize;
+  z-index: 10;
+}
+
+.slider-handle::after {
+  content: '◀ ▶';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 8px;
+  border-radius: 50%;
+  font-size: 10px;
+}
+
+
 /* Contact Section */
 .contact-header {
     text-align: center;
@@ -788,13 +1027,138 @@ a:hover {
     box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
 }
 
+/* WhatsApp Floating Button */
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px; /* Adjust this to change icon size */
+    height: 60px; /* Adjust this to change icon size */
+    background: #25D366; /* WhatsApp green */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+    z-index: 1000;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    animation: pulse 2s infinite;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
+    background: #128C7E; /* Darker WhatsApp green on hover */
+}
+
+.whatsapp-float i {
+    color: white;
+    font-size: 1.8rem; /* Adjust this to change icon size */
+    transition: transform 0.3s ease;
+}
+
+.whatsapp-float:hover i {
+    transform: scale(1.1);
+}
+
+/* Pulse animation for WhatsApp button */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+    }
+    50% {
+        box-shadow: 0 4px 20px rgba(37, 211, 102, 0.6);
+    }
+    100% {
+        box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+    }
+}
+
+/* Responsive adjustments for WhatsApp button */
+@media (max-width: 768px) {
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+    }
+    
+    .whatsapp-float i {
+        font-size: 1.5rem;
+    }
+}
+
 /* Footer */
 .footer {
-    background-color: var(--heading-color);
-    color: var(--white-color);
-    text-align: center;
-    padding: 30px 0;
+    background-color: #f3f4f6;
+    color: var(--foreground-color);
+    padding: 20px 0;
     font-size: 0.9em;
+    border-top: 1px solid var(--border-color);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    align-items: start;
+}
+
+.footer-section h3 {
+    color: var(--primary-color);
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.footer-section h4 {
+    color: var(--foreground-color);
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.footer-section p {
+    color: var(--muted-foreground);
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+}
+
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.footer-contact p {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.footer-contact i {
+    color: var(--primary-color);
+    width: 18px;
+}
+
+.footer-right {
+    text-align: right;
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+    }
+    
+    .footer-right {
+        text-align: center;
+    }
+    
+    .footer-contact p {
+        justify-content: center;
+    }
 }
 
 /* Responsive Design */
@@ -844,6 +1208,15 @@ a:hover {
 
     .hero h1 {
         font-size: 3em;
+    }
+    
+    .hero-title {
+        font-size: 3.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.8rem;
+        margin-top: 1.
     }
 
     .hero p {
@@ -904,6 +1277,16 @@ a:hover {
     .hero h1 {
         font-size: 2.8em;
     }
+    
+    .hero-title {
+        font-size: 3rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+        margin-top: 1.2em;
+    }
+    
     .hero p {
         font-size: 1em;
     }
@@ -964,6 +1347,16 @@ a:hover {
     .hero h1 {
         font-size: 2.2em;
     }
+    
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 0.9rem;
+        margin-top: 1em;
+    }
+    
     .hero p {
         font-size: 0.95em;
     }
@@ -1026,216 +1419,99 @@ a:hover {
     }
 }
 
-/* --- Modern Before/After Slider Styles --- */
+/* --- Interactive Before/After Slider Styles --- */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+    max-width: 72rem; /* max-w-6xl */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (min-width: 768px) {
+    .gallery-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+    }
+    
+    .before-after-slider.large {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+}
+
 .before-after-slider {
     position: relative;
-    max-width: 900px;
-    margin: 2rem auto;
-    padding: 0 20px;
-    perspective: 1000px; /* Para efectos 3D */
-}
-
-.slider-container {
-    position: relative;
     width: 100%;
-    height: 400px;
-    overflow: hidden;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-    background: #f8fafc;
-}
-
-.slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transform: translateX(100%) scale(0.9);
-    transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    will-change: transform, opacity;
-}
-
-.slide.active {
-    opacity: 1;
-    transform: translateX(0) scale(1);
-    z-index: 2;
-}
-
-.slide.prev {
-    transform: translateX(-100%) scale(0.9);
-}
-
-.slide.next {
-    transform: translateX(100%) scale(0.9);
-}
-
-.before-after-pair {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    padding: 20px;
-    height: 100%;
-    align-items: center;
-}
-
-.image-container {
-    position: relative;
+    aspect-ratio: 4/3;
     border-radius: 12px;
     overflow: hidden;
+    cursor: ew-resize;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-    transform: translateY(0);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.image-container:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-}
-
-.image-container img {
-    width: 100%;
-    height: 280px;
-    object-fit: cover;
-    display: block;
-    transition: filter 0.3s ease;
-}
-
-.image-container:hover img {
-    filter: brightness(1.05) contrast(1.05);
-}
-
-.image-label {
+.before-after-slider img {
     position: absolute;
-    top: 20px;
-    left: 20px;
-    background: linear-gradient(135deg, #1e3a8a, #3b82f6);
-    color: white;
-    padding: 10px 16px;
-    border-radius: 20px;
-    font-weight: 700;
-    font-size: 0.85rem;
-    letter-spacing: 1.2px;
-    text-transform: uppercase;
-    box-shadow: 0 4px 15px rgba(30, 58, 138, 0.3);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-.slider-btn {
+.after-container {
+    position: absolute;
+    inset: 0;
+    clip-path: inset(0 50% 0 0);
+    will-change: clip-path;
+}
+
+.slider-line {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 4px;
+    background: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    z-index: 10;
+    will-change: left;
+    pointer-events: none;
+}
+
+.slider-handle {
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
-    background: linear-gradient(135deg, #1e3a8a, #3b82f6);
-    color: white;
-    border: none;
-    cursor: pointer;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 32px;
+    height: 32px;
+    background: white;
     border-radius: 50%;
-    width: 60px;
-    height: 60px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.2rem;
-    box-shadow: 0 6px 20px rgba(30, 58, 138, 0.3);
-    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    z-index: 100;
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(255, 255, 255, 0.1);
 }
 
-.slider-btn:hover {
-    background: linear-gradient(135deg, #3b82f6, #1e40af);
-    transform: translateY(-50%) scale(1.1);
-    box-shadow: 0 8px 30px rgba(30, 58, 138, 0.4);
+.arrow-left, .arrow-right {
+    width: 0;
+    height: 0;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
 }
 
-.prev-btn {
-    left: 15px;
+.arrow-left {
+    border-right: 5px solid #333;
+    margin-right: 2px;
 }
 
-.next-btn {
-    right: 15px;
-}
-
-.slider-dots {
-    text-align: center;
-    margin-top: 30px;
-    padding: 15px 0;
-}
-
-.dot {
-    height: 8px;
-    width: 30px;
-    margin: 0 6px;
-    background: rgba(30, 58, 138, 0.3);
-    border-radius: 20px;
-    display: inline-block;
-    cursor: pointer;
-    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    position: relative;
-}
-
-.dot.active {
-    background: linear-gradient(135deg, #1e3a8a, #3b82f6);
-    width: 40px;
-    box-shadow: 0 3px 10px rgba(30, 58, 138, 0.4);
-}
-
-.dot:hover:not(.active) {
-    background: rgba(30, 58, 138, 0.6);
-    width: 35px;
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .before-after-slider {
-        max-width: 100%;
-        margin: 1rem auto;
-    }
-    
-    .slider-container {
-        height: 350px;
-    }
-    
-    .before-after-pair {
-        grid-template-columns: 1fr;
-        gap: 15px;
-        padding: 15px;
-    }
-    
-    .image-container img {
-        height: 220px;
-    }
-    
-    .slider-btn {
-        width: 50px;
-        height: 50px;
-        font-size: 1rem;
-    }
-    
-    .prev-btn {
-        left: 10px;
-    }
-    
-    .next-btn {
-        right: 10px;
-    }
-}
-
-@media (max-width: 480px) {
-    .image-container img {
-        height: 180px; /* Aún más pequeña en pantallas muy pequeñas */
-    }
-    
-    .image-label {
-        top: 10px;
-        left: 10px;
-        padding: 6px 10px;
-        font-size: 0.8rem;
-    }
+.arrow-right {
+    border-left: 5px solid #333;
+    margin-left: 2px;
 }
 
 /* --- Ajustes en el Hero Section --- */
+
 

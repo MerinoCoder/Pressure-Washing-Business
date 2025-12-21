@@ -10,7 +10,10 @@
 <body>
     <header class="header">
         <div class="container nav-container">
-            <a href="#" class="logo">Blue Pacific Pressure Washing</a>
+            <a href="#" class="logo">
+                <img src="assets/images/logo.png" alt="Blue Pacific Pressure Washing Logo" class="logo-image">
+                Blue Pacific Pressure Washing
+            </a>
             <nav class="nav">
                 <ul class="nav-list">
                     <li><a href="#home" class="nav-link">Home</a></li>
@@ -19,7 +22,6 @@
                     <li><a href="#nuestros-trabajos" class="nav-link">Gallery</a></li>
                 </ul>
                 <button class="btn btn-primary" id="solicitar-presupuesto-nav">Free Quote</button>
-                <a href="tel:+610410799665" class="btn btn-phone" id="solicitar-presupuesto-nav">Call us at 0410 799 665</a>
             </nav>
             <div class="hamburger">
                 <i class="fas fa-bars"></i>
@@ -29,8 +31,13 @@
 
     <section class="hero" id="home">
         <div class="container hero-content">
-            <h1><span class="highlight">Restoring</span> your home <span class="highlight">without the hassle</span></h1>
-            <p>Professional pressure washing specialists for residential and commercial properties. We work with advanced equipment and eco-friendly techniques to deliver exceptional cleaning results.</p>
+            <h1 class="hero-title"><span class="hero-title-solid">BLUE PACIFIC</span></h1>
+            <h1 class="hero-title"><span class="hero-title-outline">PRESSURE WASHING</span></h1>
+            <p class="hero-subtitle">RESTORING HOMES AND BUSINESSES IN SYDNEY'S NORTHERN SUBURBS</p>
+            
+            <a href="tel:+61410799665" class="btn-call-hero">
+                <i class="fas fa-phone"></i> Call Now
+            </a>
             
             <a href="#quienes-somos" class="scroll-down"><i class="fas fa-chevron-down"></i></a>
         </div>
@@ -42,37 +49,42 @@
             <p class="section-description">Professional pressure washing solutions tailored to your needs</p>
 
             <div class="services-grid-modern">
-                <div class="service-card-modern">
+                <div class="service-card-modern group">
                     <div class="service-icon-modern">
-                        <i class="fas fa-home"></i>
+                        <i class="fas fa-droplet"></i>
                     </div>
                     <h3>Residential Cleaning</h3>
-                    <p>Complete exterior cleaning for homes, driveways, patios, and decks.</p>
+                    <p>Comprehensive cleaning solutions for your home</p>
+                    
+                    <ul class="service-list">
+                        <li>House Washing</li>
+                        <li>Driveways</li>
+                        <li>Courtyards</li>
+                        <li>Side Paths</li>
+                        <li>BBQ Area</li>
+                        <li>Pool Area</li>
+                        <li>Tennis Courts</li>
+                        <li>Fence Restoriations</li>
+                        <li> Roof Cleaning </li>
+                    
+
+                    </ul>
                 </div>
 
-                <div class="service-card-modern">
+                <div class="service-card-modern group">
                     <div class="service-icon-modern">
                         <i class="fas fa-building"></i>
                     </div>
                     <h3>Commercial Services</h3>
-                    <p>Professional cleaning for businesses, storefronts, and parking lots.</p>
+                    <p>Professional cleaning for businesses and commercial properties</p>
+                    
+                    <ul class="service-list">
+                        <li>Council Park Cleaning</li>
+                        <li>Car Park Cleaning</li>
+                        <li>Roof Cleaning</li>
+                        
                 </div>
 
-                <div class="service-card-modern">
-                    <div class="service-icon-modern">
-                        <i class="fas fa-truck"></i>
-                    </div>
-                    <h3>Fleet Washing</h3>
-                    <p>Keep your vehicles and equipment spotless and professional.</p>
-                </div>
-
-                <div class="service-card-modern">
-                    <div class="service-icon-modern">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Fence & Deck Restoration</h3>
-                    <p>Restore and protect your outdoor wooden structures.</p>
-                </div>
             </div>
         </div>
     </section>
@@ -123,59 +135,226 @@
             <h2>Gallery</h2>
             <p class="section-description">See our pressure washing work - before and after transformations that speak for themselves.</p>
 
-            <div class="before-after-slider">
-                <div class="slider-container">
-                    <div class="slide active">
-                        <div class="before-after-pair">
-                            <div class="image-container">
-                                <img src="assets/before1.webp" alt="Before pressure washing - Project 1">
-                                <div class="image-label">BEFORE</div>
-                            </div>
-                            <div class="image-container">
-                                <img src="assets/after1.webp" alt="After pressure washing - Project 1">
-                                <div class="image-label">AFTER</div>
-                            </div>
-                        </div>
+            <div class="gallery-grid">
+                <div class="before-after-slider large" data-slider>
+                    <img src="assets/before1.webp" alt="Before" class="before-image">
+                    <div class="after-container">
+                        <img src="assets/after1.webp" alt="After" class="after-image">
                     </div>
-                    
-                    <div class="slide">
-                        <div class="before-after-pair">
-                            <div class="image-container">
-                                <img src="assets/before2.webp" alt="Before pressure washing - Project 2">
-                                <div class="image-label">BEFORE</div>
-                            </div>
-                            <div class="image-container">
-                                <img src="assets/after2.webp" alt="After pressure washing - Project 2">
-                                <div class="image-label">AFTER</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="slide">
-                        <div class="before-after-pair">
-                            <div class="image-container">
-                                <img src="assets/before3.webp" alt="Before pressure washing - Project 3">
-                                <div class="image-label">BEFORE</div>
-                            </div>
-                            <div class="image-container">
-                                <img src="assets/after3.webp" alt="After pressure washing - Project 3">
-                                <div class="image-label">AFTER</div>
-                            </div>
+                    <div class="slider-line">
+                        <div class="slider-handle">
+                            <span class="arrow-left"></span>
+                            <span class="arrow-right"></span>
                         </div>
                     </div>
                 </div>
-                
-                <button class="slider-btn prev-btn" onclick="changeSlide(-1)">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <button class="slider-btn next-btn" onclick="changeSlide(1)">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-                
-                <div class="slider-dots">
-                    <span class="dot active" onclick="currentSlide(1)"></span>
-                    <span class="dot" onclick="currentSlide(2)"></span>
-                    <span class="dot" onclick="currentSlide(3)"></span>
+
+                <div class="before-after-slider" data-slider>
+                    <img src="assets/before2.webp" alt="Before" class="before-image">
+                    <div class="after-container">
+                        <img src="assets/after2.webp" alt="After" class="after-image">
+                    </div>
+                    <div class="slider-line">
+                        <div class="slider-handle">
+                            <span class="arrow-left"></span>
+                            <span class="arrow-right"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="before-after-slider" data-slider>
+                    <img src="assets/before3.webp" alt="Before" class="before-image">
+                    <div class="after-container">
+                        <img src="assets/after3.webp" alt="After" class="after-image">
+                    </div>
+                    <div class="slider-line">
+                        <div class="slider-handle">
+                            <span class="arrow-left"></span>
+                            <span class="arrow-right"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="before-after-slider large" data-slider>
+                    <img src="assets/before5.webp" alt="Before" class="before-image">
+                    <div class="after-container">
+                        <img src="assets/after5.webp" alt="After" class="after-image">
+                    </div>
+                    <div class="slider-line">
+                        <div class="slider-handle">
+                            <span class="arrow-left"></span>
+                            <span class="arrow-right"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="before-after-slider" data-slider>
+                    <img src="assets/before6.webp" alt="Before" class="before-image">
+                    <div class="after-container">
+                        <img src="assets/after6.webp" alt="After" class="after-image">
+                    </div>
+                    <div class="slider-line">
+                        <div class="slider-handle">
+                            <span class="arrow-left"></span>
+                            <span class="arrow-right"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="before-after-slider" data-slider>
+                    <img src="assets/before7.webp" alt="Before" class="before-image">
+                    <div class="after-container">
+                        <img src="assets/after7.webp" alt="After" class="after-image">
+                    </div>
+                    <div class="slider-line">
+                        <div class="slider-handle">
+                            <span class="arrow-left"></span>
+                            <span class="arrow-right"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="before-after-slider large" data-slider>
+                    <img src="assets/before8.webp" alt="Before" class="before-image">
+                    <div class="after-container">
+                        <img src="assets/after8.webp" alt="After" class="after-image">
+                    </div>
+                    <div class="slider-line">
+                        <div class="slider-handle">
+                            <span class="arrow-left"></span>
+                            <span class="arrow-right"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="before-after-slider" data-slider>
+                    <img src="assets/before9.webp" alt="Before" class="before-image">
+                    <div class="after-container">
+                        <img src="assets/after9.webp" alt="After" class="after-image">
+                    </div>
+                    <div class="slider-line">
+                        <div class="slider-handle">
+                            <span class="arrow-left"></span>
+                            <span class="arrow-right"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="before-after-slider" data-slider>
+                    <img src="assets/before10.webp" alt="Before" class="before-image">
+                    <div class="after-container">
+                        <img src="assets/after10.webp" alt="After" class="after-image">
+                    </div>
+                    <div class="slider-line">
+                        <div class="slider-handle">
+                            <span class="arrow-left"></span>
+                            <span class="arrow-right"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="before-after-slider large" data-slider>
+                    <img src="assets/before11.webp" alt="Before" class="before-image">
+                    <div class="after-container">
+                        <img src="assets/after11.webp" alt="After" class="after-image">
+                    </div>
+                    <div class="slider-line">
+                        <div class="slider-handle">
+                            <span class="arrow-left"></span>
+                            <span class="arrow-right"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="before-after-slider" data-slider>
+                    <img src="assets/before12.webp" alt="Before" class="before-image">
+                    <div class="after-container">
+                        <img src="assets/after12.webp" alt="After" class="after-image">
+                    </div>
+                    <div class="slider-line">
+                        <div class="slider-handle">
+                            <span class="arrow-left"></span>
+                            <span class="arrow-right"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="before-after-slider" data-slider>
+                    <img src="assets/before13.webp" alt="Before" class="before-image">
+                    <div class="after-container">
+                        <img src="assets/after13.webp" alt="After" class="after-image">
+                    </div>
+                    <div class="slider-line">
+                        <div class="slider-handle">
+                            <span class="arrow-left"></span>
+                            <span class="arrow-right"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="before-after-slider large" data-slider>
+                    <img src="assets/before14.webp" alt="Before" class="before-image">
+                    <div class="after-container">
+                        <img src="assets/after14.webp" alt="After" class="after-image">
+                    </div>
+                    <div class="slider-line">
+                        <div class="slider-handle">
+                            <span class="arrow-left"></span>
+                            <span class="arrow-right"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="before-after-slider" data-slider>
+                    <img src="assets/before15.webp" alt="Before" class="before-image">
+                    <div class="after-container">
+                        <img src="assets/after15.webp" alt="After" class="after-image">
+                    </div>
+                    <div class="slider-line">
+                        <div class="slider-handle">
+                            <span class="arrow-left"></span>
+                            <span class="arrow-right"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="before-after-slider" data-slider>
+                    <img src="assets/before16.webp" alt="Before" class="before-image">
+                    <div class="after-container">
+                        <img src="assets/after16.webp" alt="After" class="after-image">
+                    </div>
+                    <div class="slider-line">
+                        <div class="slider-handle">
+                            <span class="arrow-left"></span>
+                            <span class="arrow-right"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="before-after-slider large" data-slider>
+                    <img src="assets/before17.webp" alt="Before" class="before-image">
+                    <div class="after-container">
+                        <img src="assets/after17.webp" alt="After" class="after-image">
+                    </div>
+                    <div class="slider-line">
+                        <div class="slider-handle">
+                            <span class="arrow-left"></span>
+                            <span class="arrow-right"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="before-after-slider large" data-slider>
+                    <img src="assets/before18.webp" alt="Before" class="before-image">
+                    <div class="after-container">
+                        <img src="assets/after18.webp" alt="After" class="after-image">
+                    </div>
+                    <div class="slider-line">
+                        <div class="slider-handle">
+                            <span class="arrow-left"></span>
+                            <span class="arrow-right"></span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -224,18 +403,24 @@
                 </div>
 
                 <div class="contact-form-container">
-                    <form class="contact-form">
+                    <form class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                        <!-- Web3Forms Access Key - Get yours at https://web3forms.com -->
+                        <input type="hidden" name="access_key" value="83340ba8-7ac6-4513-a40d-f0dd0baf0d6f">
+                        
+                        <!-- Optional: Redirect after submission -->
+                        <input type="hidden" name="redirect" value="https://web3forms.com/success">
+                        
                         <div class="form-group">
-                            <input type="text" id="nombre" name="nombre" placeholder="Your Name" required>
+                            <input type="text" id="nombre" name="name" placeholder="Your Name" required>
                         </div>
                         <div class="form-group">
                             <input type="email" id="email" name="email" placeholder="Your Email" required>
                         </div>
                         <div class="form-group">
-                            <input type="tel" id="telefono" name="telefono" placeholder="Your Phone">
+                            <input type="tel" id="telefono" name="phone" placeholder="Your Phone">
                         </div>
                         <div class="form-group">
-                            <textarea id="mensaje" name="mensaje" rows="6" placeholder="Tell us about your project" required></textarea>
+                            <textarea id="mensaje" name="message" rows="6" placeholder="Tell us about your project" required></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary submit-btn">Send Message</button>
                     </form>
@@ -244,9 +429,32 @@
         </div>
     </section>
   
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/61410799665" class="whatsapp-float" target="_blank" aria-label="Contact us on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
     <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 Blue Pacific Pressure Washing. All rights reserved.</p>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>Blue Pacific Pressure Washing</h3>
+                <p>Restoring homes and businesses in Sydney's northern suburbs</p>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Contact Us</h4>
+                <div class="footer-contact">
+                    <p><i class="fas fa-phone"></i> +61 410 799 665</p>
+                    <p><i class="fas fa-envelope"></i> info@bluepacificpw.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> North Shore & Northern Beaches</p>
+                </div>
+            </div>
+            
+            <div class="footer-section footer-right">
+                <p>&copy; 2025 Blue Pacific Pressure Washing</p>
+                <p>All rights reserved.</p>
+                <p>ABN: 16 859 830 973</p>
+            </div>
         </div>
     </footer>
 
