@@ -1187,18 +1187,6 @@ a:hover {
     .nav.active {
         display: flex;
     }
-    
-    /* Overlay oscuro detrás del menú */
-    .nav.active::before {
-        content: '';
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background-color: rgba(0, 0, 0, 0.5);
-        z-index: -1;
-    }
 
     .nav-list {
         flex-direction: column;
@@ -1462,6 +1450,7 @@ a:hover {
     .gallery-grid {
         grid-template-columns: repeat(4, 1fr);
         gap: 1.5rem;
+        grid-auto-flow: dense;
     }
     
     .before-after-slider.large {

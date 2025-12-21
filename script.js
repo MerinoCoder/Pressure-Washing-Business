@@ -24,6 +24,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Cierra el menú cuando se hace clic fuera de él
+    document.addEventListener('click', (e) => {
+        if (nav.classList.contains('active')) {
+            // Si el clic no es en el nav ni en el hamburger, cierra el menú
+            if (!nav.contains(e.target) && !hamburger.contains(e.target)) {
+                nav.classList.remove('active');
+                const icon = hamburger.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        }
+    });
+
     // 2. Filtro de proyectos en la sección "Nuestros Trabajos"
     const filterButtons = document.querySelectorAll('.btn-filter');
     const projectCards = document.querySelectorAll('.project-card');
